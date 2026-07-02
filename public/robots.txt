@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://deephospital.in/sitemap.xml

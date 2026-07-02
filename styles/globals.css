@@ -1,0 +1,138 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --deep-navy: #0A1628;
+  --medical-blue: #1B4FD8;
+  --teal-heal: #0D9488;
+  --warm-white: #F8FAFC;
+  --soft-grey: #E2E8F0;
+  --text-primary: #0F172A;
+  --text-muted: #64748B;
+  --gold-trust: #D97706;
+  --emergency-red: #DC2626;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-warm-white text-text-primary font-sans;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3 {
+    @apply font-display;
+  }
+
+  h4, h5, h6 {
+    @apply font-sans font-semibold;
+  }
+
+  *:focus-visible {
+    @apply outline-2 outline-offset-2 outline-medical-blue;
+  }
+}
+
+@layer components {
+  .section-padding {
+    @apply py-16 px-4 sm:px-6 lg:px-8;
+  }
+
+  .container-max {
+    @apply max-w-7xl mx-auto;
+  }
+
+  .card-base {
+    @apply bg-white rounded-lg shadow-sm border border-soft-grey;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-6 py-3 bg-medical-blue text-white font-semibold rounded-sm hover:bg-blue-700 transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-medical-blue;
+    border-radius: 4px;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center px-6 py-3 border-2 border-white text-white font-semibold hover:bg-white hover:text-deep-navy transition-colors duration-200;
+    border-radius: 4px;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center px-6 py-3 border-2 border-medical-blue text-medical-blue font-semibold hover:bg-medical-blue hover:text-white transition-colors duration-200;
+    border-radius: 4px;
+  }
+
+  .btn-emergency {
+    @apply inline-flex items-center justify-center px-6 py-3 bg-emergency-red text-white font-semibold hover:bg-red-700 transition-colors duration-200;
+    border-radius: 4px;
+  }
+
+  .service-card {
+    @apply card-base p-6 relative overflow-hidden transition-all duration-300 hover:shadow-md;
+    border-left: 3px solid transparent;
+  }
+
+  .service-card:hover {
+    border-left-color: var(--teal-heal);
+    transform: translateX(2px);
+  }
+
+  .doctor-card {
+    @apply card-base overflow-hidden transition-all duration-300 hover:shadow-md hover:-translate-y-1;
+  }
+
+  .stat-number {
+    @apply font-display text-4xl font-bold text-medical-blue;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .breathing-circle {
+    animation: breathing 4s ease-in-out infinite;
+  }
+}
+
+/* Breathing animation for hero */
+@keyframes breathing {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.2;
+  }
+  50% {
+    transform: scale(1.12);
+    opacity: 0.08;
+  }
+}
+
+/* Carousel smooth scroll */
+.carousel-container {
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.carousel-item {
+  scroll-snap-align: start;
+}
+
+/* Reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  .breathing-circle {
+    animation: none;
+    opacity: 0.12;
+  }
+
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
